@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create News</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+
+<ul>
+	<li><a th:href="@{/addNews}">Добавление новости</a > </li>
+	<li><a th:href="@{/newsList}">Новости со всего мира</a ></li>
+	<li><a th:href="@{/logout}">Выйти</a ></li>
+</ul>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script>
+    $(function() {
+        $("#join_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+        $("#retire_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+    });
+</script>
+</body>
+</html>

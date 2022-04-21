@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Новость</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+
+<div th:insert="fragments/navbar :: navbar"></div>
+<br>
+<!-- <div th:replace="fragments/header :: header"/> -->
+<div class="container">
+	<div class="col-1"></div >
+	
+	<div class="col-10">
+		<div class="card text-center" th:object="${news}">
+		  <div class="card-header">
+		    <h2>News</h2>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title" th:text="${news.title}">Special title treatment</h5>
+		    <p class="card-text"  th:text="${news.context}">With supporting text below as a natural lead-in to additional content.</p>
+		     <br>
+		  <div class="container">
+		  <div class="col-md-4" th:if="${session.userId == postOwner}">
+		   <form th:action="@{/updateNews/{id}(id = ${news.id})}" method="get">
+            <button type="submit" class="btn btn-primary btn-block mt-3">Редактировать</button>
+            </form>
+		  </div>
+		  </div >
+		     
+		  </div> 
+		  
+		  <div class="card-footer text-muted">
+		  <p>Дата одобрение: </p>
+		  	<div th:text="${news.approved_time}"></div >
+		  	<br>
+		  	<p>Логин создатела: </p>
+			<div th:text="${news.user.username}"></div >
+			<br>
+		  	<p>E-mail создатела: </p>
+			<div th:text="${news.user.email}"></div >
+			
+		</div>
+	</div >
+	
+	<div class="col-1"></div >
+</div >
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script>
+    $(function() {
+        $("#join_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+        $("#retire_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+    });
+</script>
+</body>
+</html>

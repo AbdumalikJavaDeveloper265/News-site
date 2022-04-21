@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все Пользователи</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+
+<div th:insert="fragments/navbar :: navbar"></div>
+<br>
+
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+  <div class="container">
+	<div class="col-1"></div >
+
+	<div class="col-10">
+		<div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Age</th>
+      <th scope="col">Delete button</th>
+    </tr>
+  </thead>
+  <tbody th:if="${not #lists.isEmpty(allUsers)}">
+    <tr  th:each="user : ${allUsers}">
+      <th scope="row" th:text="${user.id}">Id</th>
+      <th th:text="${user.username}">Username</th>
+      <th th:text="${user.passwordConfirm}">Password</th>
+      <th th:text="${user.email}">E-mail</th>
+      <th th:text="${user.age}">Age</th>
+      <th>
+		  	<form th:action="@{/delete/{id}(id = ${user.id})}" method="post">
+            	<button type="submit" class="btn btn-primary btn-block mt-3">Удалить
+            	</button>
+            </form>
+      </th>
+    </tr >
+  </tbody >
+</table>
+		</div>
+	</div>
+	<div class col-1></div>
+ </div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script>
+    $(function() {
+        $("#join_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+        $("#retire_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+    });
+</script>
+</body>
+</html>

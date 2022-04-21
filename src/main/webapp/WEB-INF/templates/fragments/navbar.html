@@ -1,0 +1,50 @@
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Доска Новости</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" th:href="@{/newsList}">Главная</a>
+        <a class="nav-link" th:href="@{/addNews}">Создать новость</a>
+        <a class="nav-link" th:href="@{/userNewsList}">Мои новости</a>
+        
+        <a class="nav-link disabled" th:href="@{/admin}">Информации о пользователях</a>
+      </div>
+    </div>
+  </div>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Доска Новости</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" th:href="@{/newsList}">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/addNews}">Создать новость</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" th:href="@{/userNewsList}">Мои новости</a>
+        </li>
+        <div sec:authorize="hasRole('ROLE_ADMIN')">
+         <li class="nav-item">
+          <a class="nav-link" th:href="@{/admin}">Информации о пользователях</a>
+        </li>
+        </div>
+
+      </ul>
+      <span class="navbar-text">
+        <a th:href="@{/logout}">Выйти</a >
+      </span>
+    </div>
+  </div>
+</nav>

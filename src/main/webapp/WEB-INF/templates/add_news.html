@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма для создание новость</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+
+<div th:insert="fragments/navbar :: navbar"></div>
+<br>
+
+<div class="container my-3">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h2>Форма для создание новость</h2>
+            <form th:action="@{/addNews}" th:object="${newsForm}" method="post">
+                <div class="form-row">
+                    <div class="col-md-6 form-group">
+                        <label>Заголовка</label>
+                        <input type="text" class="form-control" th:field="*{title}">
+                        <p th:if="${#fields.hasErrors('title')}">Invalid title</p>
+                        <!--  -->
+                        
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Текст</label>
+                        <textarea class="form-control" th:field="*{context}"></textarea>
+                        <p th:if="${#fields.hasErrors('context')}">Invalid Context</p>
+                        <!--  -->
+                        
+                    </div>
+                <button type="submit" class="btn btn-primary btn-block mt-3">Отправить</button>
+            </form>
+            <form th:action="@{/addNews}" method="get">
+            <button type="submit" class="btn btn-primary btn-block mt-3">Отменить</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script>
+    $(function() {
+        $("#join_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+        $("#retire_datepicker").datepicker({dateFormat:"yy-mm-dd"});
+    });
+</script>
+</body>
+</html>
